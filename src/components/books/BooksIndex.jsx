@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'lightsteelblue',
 }
 
 const BooksIndex = (props) => {
