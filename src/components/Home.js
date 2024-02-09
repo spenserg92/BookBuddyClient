@@ -4,8 +4,7 @@ import BooksIndex from "./books/BooksIndex"
 
 const Home = (props) => {
 	const { msgAlert, user } = props
-	// console.log('props in home', props)
-	// const [books, setBooks] = useState(null)
+
 
 	
 	return (
