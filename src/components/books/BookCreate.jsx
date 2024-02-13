@@ -17,6 +17,10 @@ const BookCreate = (props) => {
         inSeries: false
     })
 
+    const bookFormLayout = {
+        backgroundColor: 'purple',
+    }
+
     const onChange = (e) => {
         // e is the placeholder for the event
         // e.persist is bc react uses the virtual dom, we want our form data to persist every time the page renders. Which will be a lot of times.
@@ -81,6 +85,7 @@ const BookCreate = (props) => {
             handleChange={onChange}
             handleSubmit={onSubmit}
             heading="Add a new pet!"
+            style={bookFormLayout}
         />
     )
 }

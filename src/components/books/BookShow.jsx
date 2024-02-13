@@ -1,15 +1,18 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import { getOneBook } from '../../api/book'
+import { getOneBook, updateBook } from '../../api/book'
 import LoadingScreen from '../shared/LoadingScreen'
 import { Container, Card, Button } from 'react-bootstrap'
 import messages from '../shared/AutoDismissAlert/messages'
+import EditBookModal from './EditBookModal'
 
 const BookShow = (props) => {
     const {bookId} = useParams()
     const { user, msgAlert } = props
 
+
     const [book, setBook] = useState(null)
+    const [editModalShow, setEditModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
     
     useEffect(() => {
@@ -30,7 +33,7 @@ const BookShow = (props) => {
 
     return (
         <>
-            <Container className='m-2'>
+            <Container className='m-3'>
                 <Card>
                     <Card.Header>
                         { book.name }
@@ -57,9 +60,9 @@ const BookShow = (props) => {
                             ?
                             <>
                                 <Button
-                                    // className='m-2'
-                                    // variant='warning'
-                                    // onClick={() => setEditModalShow(true)}
+                                    className='m-2'
+                                    variant='warning'
+                                    onClick={() => setEditModalShow(true)}
                                 >
                                     Edit Book
                                 </Button>
@@ -83,17 +86,17 @@ const BookShow = (props) => {
             </Container>
             {/* <Container className='m-2' style={toyCardContainerLayout}>
                 {toyCards}
-            </Container>
-            <EditPetModal 
+            </Container> */}
+            <EditBookModal 
                 user={user}
                 show={editModalShow}
-                updatePet={updatePet}
+                updateBook={updateBook}
                 msgAlert={msgAlert}
                 handleClose={() => setEditModalShow(false)}
-                pet={pet}
+                book={book}
                 triggerRefresh={() => setUpdated(prev => !prev)}
             />
-            <NewToyModal 
+            {/* <NewToyModal 
                 pet={pet}
                 show={toyModalShow}
                 msgAlert={msgAlert}

@@ -22,5 +22,16 @@ export const createBook = (user, newBook) => {
 }
 
 // update -> adjust a book
+export const updateBook = (user, updatedBook) => {
+    return axios({
+        url: `${apiUrl}/books/${updatedBook._id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { book: updatedBook }
+    })
+}
+
 
 // delete -> remove a book

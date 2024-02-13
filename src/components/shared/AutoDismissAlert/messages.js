@@ -9,6 +9,7 @@ const messages = {
 	generalError: 'Something went wrong... Try Again',
 		// create pet success
 	createBookSuccess: 'Added the book!',
+	updatedBookSuccess: 'Updated the book!'
 }
 
 module.exports = messages
