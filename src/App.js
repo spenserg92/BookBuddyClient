@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import BookShow from './components/books/BookShow'
+import BookCreate from './components/books/BookCreate'
 
 const App = () => {
 
@@ -68,6 +69,14 @@ const App = () => {
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
+				/>
+				<Route
+					path='/create-book'
+					element={
+						<RequireAuth user={user} >
+							<BookCreate msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
 				/>
 				<Route
 					path='/books/:bookId'

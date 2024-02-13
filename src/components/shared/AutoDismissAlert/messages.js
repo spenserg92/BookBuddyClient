@@ -7,6 +7,8 @@ const messages = {
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
 	generalError: 'Something went wrong... Try Again',
+		// create pet success
+	createBookSuccess: 'Added the book!',
 }
 
 module.exports = messages
