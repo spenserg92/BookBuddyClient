@@ -41,7 +41,9 @@ const BooksIndex = (props) => {
             <Card.Header></Card.Header>
             <Card.Body>
                 <Card.Text>
-                    {book.name}
+                <Link to={`/books/${book._id}`} className='btn btn-info'>
+                        View {book.name}
+                    </Link>
                 </Card.Text>
                 { book.owner ? 
                     <Card.Footer>owner: {book.owner.email}</Card.Footer>
