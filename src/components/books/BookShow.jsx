@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import { getOneBook, updateBook } from '../../api/book'
+import { getOneBook, updateBook, removeBook } from '../../api/book'
 import LoadingScreen from '../shared/LoadingScreen'
 import { Container, Card, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditBookModal from './EditBookModal'
 
@@ -14,6 +15,7 @@ const BookShow = (props) => {
     const [book, setBook] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
+    const navigate = useNavigate()
     
     useEffect(() => {
         getOneBook(bookId)
@@ -26,6 +28,29 @@ const BookShow = (props) => {
                 })
             })
     }, [updated])
+
+    const donateBook = () => {
+        // we want to remove the pet
+        removeBook(user, book._id)
+            // display a success message
+            .then(() => {
+                msgAlert({
+                    heading: 'Oh Yeah!',
+                    message: messages.deleteBookSuccess,
+                    variant: 'success'
+                })
+            })
+            // navigate the user back to the index page(Home)(/)
+            .then(() => navigate('/'))
+            // if an error occurs, tell the user
+            .catch(err => {
+                msgAlert({
+                    heading: 'Oh no!',
+                    message: messages.generalError,
+                    variant: 'danger'
+                })
+            })
+    }
 
     if (!book) {
         return <LoadingScreen />
@@ -67,9 +92,9 @@ const BookShow = (props) => {
                                     Edit Book
                                 </Button>
                                 <Button
-                                    // className='m-2'
-                                    // variant='danger'
-                                    // onClick={() => setPetFree()}
+                                    className='m-2'
+                                    variant='danger'
+                                    onClick={() => donateBook()}
                                 >
                                     Donate Book
                                 </Button>

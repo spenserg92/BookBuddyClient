@@ -32,6 +32,13 @@ export const updateBook = (user, updatedBook) => {
         data: { book: updatedBook }
     })
 }
-
-
 // delete -> remove a book
+export const removeBook = (user, id) => {
+    return axios({
+        url: `${apiUrl}/books/${id}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
