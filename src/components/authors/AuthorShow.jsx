@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { removeAuthor } from '../../api/author'
 import messages from '../shared/AutoDismissAlert/messages'
-// import EditAuthorModal from '../authors/EditAuthorModal'
+import EditAuthorModal from '../authors/EditAuthorModal'
 
 const AuthorShow = (props) => {
     const { author, user, book, triggerRefresh, msgAlert } = props
@@ -78,7 +78,7 @@ const AuthorShow = (props) => {
                     }
                 </Card.Footer>
             </Card>
-            {/* <EditAuthorModal 
+            <EditAuthorModal 
                 user={user}
                 book={book}
                 author={author}
@@ -86,7 +86,7 @@ const AuthorShow = (props) => {
                 handleClose={() => setEditModalShow(false)}
                 msgAlert={msgAlert}
                 triggerRefresh={triggerRefresh}
-            /> */}
+            />
         </>
     )
 }

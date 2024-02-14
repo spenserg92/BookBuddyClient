@@ -28,7 +28,7 @@ export const updateAuthor = (user, book, updatedAuthor) => {
 // DELETE	/authors/:bookId/:authorId	
 export const removeAuthor = (user, bookId, authorId) => {
     return axios({
-        url: `${apiUrl}/toys/${bookId}/${authorId}`,
+        url: `${apiUrl}/authors/${bookId}/${authorId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
